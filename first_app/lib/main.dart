@@ -39,6 +39,17 @@ class _MyAppState extends State<MyApp> {
               ],
             ),
           ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: _incrementCounter,
+            tooltip: 'Increment',
+            child: Icon(Icons.add),
+          ),
         ),
       );
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
 }
