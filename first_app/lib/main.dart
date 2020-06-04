@@ -1,55 +1,28 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
-void main() => runApp(MyApp());
+import 'first_screen.dart';
 
-class MyApp extends StatefulWidget {
-  _MyAppState createState() => _MyAppState();
+void main() => runApp(MaterialApp(
+  title: 'Navigation',
+  home: FirstScreen(),
+));
 
-  Widget build(BuildContext context) => MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(primarySwatch: Colors.blue),
-        home: Scaffold(
-          body: Center(
-            child: Text(
-              'Flutter Demo Home Page',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+class FirstScreen extends StatelessWidget {
+  Widget build(BuildContext context) =>
+      Scaffold(
+        appBar: AppBar(
+          title: Text('最初の画面'),
+        ),
+        body: Center(
+          child: RaisedButton(
+            child: Text('次の画面を開く'),
+            onPressed: () {
+              Navigator.push(
+                context, MaterialPageRoute(builder: (context) => MyApp()),
+              );
+            },
           ),
         ),
       );
-}
-
-class _MyAppState extends State<MyApp> {
-  int _counter = 0;
-
-  Widget build(BuildContext context) => MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(primarySwatch: Colors.blue),
-        home: Scaffold(
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text('You have pushed the button this many times:'),
-                Text(
-                  '$_counter',
-                  style: Theme.of(context).textTheme.headline4,
-                )
-              ],
-            ),
-          ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: _incrementCounter,
-            tooltip: 'Increment',
-            child: Icon(Icons.add),
-          ),
-        ),
-      );
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 }
