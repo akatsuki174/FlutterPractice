@@ -12,10 +12,7 @@ class FirstScreen extends StatelessWidget {
           child: RaisedButton(
             child: Text('次の画面を開く'),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => MyApp()),
-              );
+              Navigator.pushNamed(context, '/second');
             },
           ),
         ),
