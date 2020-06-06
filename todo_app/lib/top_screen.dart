@@ -21,14 +21,22 @@ class TodoScreen extends StatelessWidget {
           itemBuilder: (context, index) => ListTile(
             title: Text(_todos[index].title),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DetailScreen(todo: _todos[index]),
-                ),
-              );
+              _navigateDetailScreen(context, index);
             },
           ),
         ),
       );
+
+  void _navigateDetailScreen(BuildContext context, int index) async {
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => DetailScreen(todo: _todos[index]),
+      ),
+    );
+
+    Scaffold.of(context)
+    ..removeCurrentSnackBar()
+    ..showSnackBar(SnackBar(content: Text(result)));
+  }
 }
