@@ -17,8 +17,20 @@ class DetailScreen extends StatelessWidget {
           title: Text(_todo.title),
         ),
         body: Padding(
-          padding: EdgeInsets.all(16.0),
-          child: Text(_todo.description),
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: <Widget>[
+              Text(_todo.description),
+              RaisedButton(
+                child: Text('戻る'),
+                color: Colors.orangeAccent,
+                textColor: Colors.white,
+                onPressed: () {
+                  Navigator.pop(context, _todo.title);
+                },
+              ),
+            ],
+          ),
         ),
       );
 }
